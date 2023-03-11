@@ -4,7 +4,7 @@ import React from 'react'
 
 import { Icon } from '@rneui/base'
 
-export default function Header({title,type}){
+export default function Header({title,type,navigation}){
 
     return(
         <View style = {styles.header}>
@@ -14,7 +14,7 @@ export default function Header({title,type}){
                     name={type}
                     color={colors.headerText}
                     size= {28}
-                    onPress={()=>{}}/>
+                    onPress={()=>{navigation.goBack()}}/>
             </View>
             <View>
                 <Text style = {styles.headerText}>{title}</Text>
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     header:{
         flexDirection: 'row',
         height: parameters.headerHeight,
+        paddingTop: parameters.paddingTop,
         backgroundColor:colors.buttons,
         marginBottom: 25
     },

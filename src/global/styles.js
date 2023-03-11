@@ -1,10 +1,17 @@
- export const colors = {
+import { Dimensions } from "react-native"
+
+export function isIphoneX(){
+   const dim = Dimensions.get('window')
+}
+
+export const colors = {
     buttons: '#ff8c52',
     grey1: '#43484d',
     grey2: '#5e6977',
     grey3: '#86939e',
     grey4: '#bdc6cf',
     grey5: '#e1e8ee',
+    background2: '#ff8c52',
     cardComment: '#86939e',
     cardBackground: 'white',
     statusBar:"#ff8c52",
@@ -12,29 +19,55 @@
  }
 
  export const parameters ={
-    headerHeight:40,
-    styleButton:{
+    headerHeight: Platform.OS=== 'android'? 40: isIphoneX() ? 80 : 70,
+    paddingTop: Platform.OS=== 'android'? 0: isIphoneX() ? 50 : 35,
+    styledButton:{
       backgroundColor:"#ff8c52",
-      alignItems: "center",
+      alignContent: "center",
+      justifyContent: "center",
       borderRadius: 35,
       borderWidth: 1,
       borderColor: "#ff8c52",
-      padding: 15,
-      width: "95%"
+      height: 50,
+      paddingHorizontal:20,
+      width: "100%"
     },
-    styleButton1:{
-      alignItems: "center",
+    buttonTitle:{
+         color:"white",
+         fontSize:20,
+         fontWeight:"bold",
+         alignItems:"center",
+         justifyContent:"center",
+         marginTop:-3
+    },
+    styledButton1:{
+      backgroundColor:"white",
+      alignContent: "center",
+      justifyContent: "center",
       borderRadius: 35,
       borderWidth: 1,
       borderColor: "#ff8c52",
-      padding: 15,
-      width: "95%"
+      height: 50,
+      paddingHorizontal:20,
+      width: "100%"
     },
+    buttonTitle1:{
+      color:"#ff8c52",
+      fontSize:20,
+      fontWeight:"bold",
+      alignItems:"center",
+      justifyContent:"center",
+      marginTop:-3
+ },
     socialIcon:{
       borderRadius: 12,
-      height: 50,
-      
+      height: 50,  
     }
+ }
+ export const title ={
+   color: "#ff8c52",
+   fontSize:20,
+   fontWeight:"bold"
  }
 
  

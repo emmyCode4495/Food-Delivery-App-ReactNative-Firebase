@@ -11,7 +11,7 @@ import * as Animatable from 'react-native-animatable'
 import { Icon, SocialIcon,Button } from 'react-native-elements'
 
 
-export default function SignInScreen(){
+export default function SignInScreen({navigation}){
 
     const [textInput2Focus,setTextInput2Focus] = useState(false)
     const [textInput1Focus,setTextInput1Focus] = useState(false)
@@ -20,7 +20,8 @@ export default function SignInScreen(){
     const textInput2 = useRef(2)
     return(
         <View style = {styles.container}>
-            <Header title="MY ACCOUNT" type="arrow-left"/>
+            <Header title="MY ACCOUNT" 
+            type="arrow-left" navigation={navigation}/>
             <View style = {styles.titleTexttMargin}>
                 <Text style = {styles.signInText}>SIGN-IN</Text>
             </View>
@@ -86,12 +87,15 @@ export default function SignInScreen(){
                 </View>
 
             </View>
-                <View style={styles.opacityView}>
-                    <TouchableOpacity
-                        style = {parameters.styleButton}
-                        >
-                            <Text style={styles.buttonText}>SIGN IN</Text>
-                        </TouchableOpacity>
+                <View style={{marginHorizontal:20,marginVertical:20}}>
+                <Button
+                title="SIGN IN"
+                 buttonStyle={parameters.styledButton}
+                 titleStyle={parameters.buttonTitle}
+                 onPress = {()=>{
+                    navigation.navigate("HomeScreen")
+                }}
+                  />
                 </View>
             <View style={{alignItems:"center",
                             marginTop:20}}>
@@ -130,13 +134,16 @@ export default function SignInScreen(){
                                 }}>New on FOODie?</Text>
             </View>
 
-            <View style={styles.opacityView}>
-                    <TouchableOpacity
-                        style = {parameters.styleButton1}
-                        >
-                            <Text style={styles.buttonText1}>CREATE AN ACCOUNT</Text>
-                        </TouchableOpacity>
-                </View>
+            <View style={{marginHorizontal:20,marginVertical:20}}>
+                 <Button
+                 title="CREATE AN ACCOUNT"
+                 buttonStyle={parameters.styledButton1}
+                 titleStyle={parameters.buttonTitle1}
+                 onPress = {()=>{
+                    navigation.navigate("CreateAccountScreen")
+                }}
+                  />
+            </View>
         </View>
     )
 
@@ -146,22 +153,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    opacityView:{
-        marginLeft: 10,
-        marginRight: 5,
-        marginTop: 20,
-        alignItems: "center",
-        justifyContent: "center",
-        alignContent: "center"
-    },
     titleTexttMargin:{
     marginLeft: 20,
     marginTop:10,
-    },
-    signInText:{
-        fontWeight: 'bold',
-        fontSize:22,
-        color: '#ff8c52'    
     },
     text1:{
         color:colors.grey3,

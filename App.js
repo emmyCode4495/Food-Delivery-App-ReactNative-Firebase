@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet,View,StatusBar,Text} from 'react-native';
 import {colors} from './src/global/styles';
+import RootNavigator from './src/navigation/rootNavigator';
 import SignInScreen from './src/screens/authScreens/SigninScreen';
+import SignInWelcomeScreen from './src/screens/authScreens/signInWelcomeScreen';
 
 
 export default function App() {
@@ -10,7 +12,7 @@ export default function App() {
       <StatusBar 
       barStyle="light content"
       backgroundColor= {colors.statusBar} />     
-        <SignInScreen />
+       <RootNavigator/>
     </View>
   );
 }
