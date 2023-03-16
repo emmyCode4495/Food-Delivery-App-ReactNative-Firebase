@@ -33,31 +33,31 @@ export default function SignInWelcomeScreen({navigation}){
                 <Swiper autoplay={true} showsButtons={false}>
                     <View style={StyleSheet.slider1}>
                         <Image 
-                        source={require('../../Images/cabbage.png')}
+                        source={{uri:'https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'}}
                         style={{height:'100%', width:'100%'}}/>
                     </View>
 
                     <View style={StyleSheet.slider2}>
                         <Image 
-                        source={require('../../Images/oranges.png')}
+                        source={{uri:'https://images.unsplash.com/photo-1557142046-c704a3adf364?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'}}
                         style={{height:'100%', width:'100%'}}/>
                     </View>
 
                     <View style={StyleSheet.slider3}>
                         <Image 
-                        source={require('../../Images/pizza.png')}
+                        source={{uri:'https://images.unsplash.com/photo-1589227365533-cee630bd59bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'}}
                         style={{height:'100%', width:'100%'}}/>
                     </View>
 
                     <View style={StyleSheet.slider4}>
                         <Image 
-                        source={require('../../Images/rice.png')}
+                        source={{uri:'https://images.unsplash.com/photo-1569058242252-623df46b5025?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'}}
                         style={{height:'100%', width:'100%'}}/>
                     </View>
 
                     <View style={StyleSheet.slider5}>
                         <Image 
-                        source={require('../../Images/vegs.png')}
+                        source={{uri:'https://images.unsplash.com/photo-1542574271-7f3b92e6c821?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'}}
                         style={{height:'100%', width:'100%'}}/>
                     </View>
                 </Swiper>

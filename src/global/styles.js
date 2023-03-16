@@ -15,11 +15,12 @@ export const colors = {
     cardComment: '#86939e',
     cardBackground: 'white',
     statusBar:"#ff8c52",
-    headerText: "white"
+    headerText: "white",
+    lightgreen: "#66DF48"
  }
 
  export const parameters ={
-    headerHeight: Platform.OS=== 'android'? 40: isIphoneX() ? 80 : 70,
+    headerHeight: Platform.OS=== 'android'? 40: isIphoneX() ? 80 : 110,
     paddingTop: Platform.OS=== 'android'? 0: isIphoneX() ? 50 : 35,
     styledButton:{
       backgroundColor:"#ff8c52",
