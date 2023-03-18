@@ -5,6 +5,9 @@ import SignInWelcomeScreen from '../screens/authScreens/signInWelcomeScreen';
 import SignInScreen from '../screens/authScreens/SigninScreen';
 import CreateAccountScreen from '../screens/authScreens/createAccountScreen';
 import HomeScreen from '../screens/contentScreens/homeScreen';
+import RootClientTabs from './ClientTab';
+import DrawerNavigator from './DrawerNavigator';
+import MapScreen from '../screens/contentScreens/mapScreen';
 
 const Auth = createStackNavigator();
 
@@ -36,8 +39,16 @@ export default function AuthStack(){
            }}
             />
             <Auth.Screen
-           name = "HomeScreen"
-           component = {HomeScreen}
+           name = "DrawerNavigator"
+           component = {DrawerNavigator}
+           options ={{
+                headerShown: false,
+           }}
+            />
+
+             <Auth.Screen
+           name = "mapScreen"
+           component = {MapScreen}
            options ={{
                 headerShown: false,
            }}

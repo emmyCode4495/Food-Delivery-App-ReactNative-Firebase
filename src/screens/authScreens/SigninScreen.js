@@ -5,8 +5,11 @@ import {StyleSheet,
      TextInput, TouchableOpacity} from 'react-native';
 import {colors, parameters, title} from '../../global/styles';
 import {ReactComponentElement, useState,useRef} from 'react';
+
 import Header from '../../components/header';
 import * as Animatable from 'react-native-animatable'
+
+
 
 import { Icon, SocialIcon,Button } from 'react-native-elements'
 
@@ -93,7 +96,8 @@ export default function SignInScreen({navigation}){
                  buttonStyle={parameters.styledButton}
                  titleStyle={parameters.buttonTitle}
                  onPress = {()=>{
-                    navigation.navigate("HomeScreen")
+                    navigation.navigate('DrawerNavigator')
+
                 }}
                   />
                 </View>

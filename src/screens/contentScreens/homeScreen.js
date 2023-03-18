@@ -14,17 +14,21 @@ import { filterData, restaurantData } from '../../global/data'
 import {colors, parameters} from '../../global/styles'
 import CountDown from 'react-native-countdown-component'
 
+
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-export default function HomeScreen(){
+export default function HomeScreen({navigation}){
+
     const [delivery, setDelivery] = useState(true)
     const [indexCheck, setIndexCheck] = useState('0')
+
     return(
         <View style={styles.container}>
-            <HomeHeader/>
+            <HomeHeader navigation={navigation}/>
     <ScrollView
     stickyHeaderIndices={[0]}
     showsVerticalScrollIndicator= {true}>
+
         <View style={{backgroundColor:colors.cardBackground, paddingBottom:10}}>
             <View style={{marginTop:10,flexDirection:'row',justifyContent:'space-evenly'}}>
                     <TouchableOpacity
@@ -39,6 +43,7 @@ export default function HomeScreen(){
                     <TouchableOpacity
                     onPress={()=>{
                         setDelivery(false)
+                        navigation.navigate('mapScreen')
                     }}>
                         <View style={{...styles.deliveryButton,backgroundColor:delivery?colors.grey5:colors.buttons}}>
                             <Text style={styles.deliveryText}>Pick up</Text>
@@ -197,6 +202,24 @@ export default function HomeScreen(){
         </View>
 
     </ScrollView>
+
+{ delivery &&
+    <View style={styles.FloatButtonStyle}>
+        <TouchableOpacity
+        onPress={()=>{
+            navigation.navigate('mapScreen')
+        }}>
+            <Icon
+            type='material'
+            name='place'
+            size={32}
+            color={colors.buttons}
+            />
+
+            <Text style={{color:colors.grey3,fontWeight:'bold',fontSize:19}}>Map</Text>
+        </TouchableOpacity>
+    </View>
+}
         </View>
     )
 }
@@ -284,5 +307,16 @@ const styles = StyleSheet.create({
         fontSize:20,
         marginTop:10,
         fontWeight:'bold'
+    },
+    FloatButtonStyle:{
+        position:'absolute',
+        bottom:10,
+        right:15,
+        backgroundColor:colors.cardBackground,
+        elevation:10,
+        width:60,
+        height:60,
+        borderRadius:30,
+        alignItems:'center'
     }
 })
