@@ -118,7 +118,7 @@ export default function SearchScreenComponent(){
                         <TouchableOpacity
                             onPress={()=>{
                                 Keyboard.dismiss
-                                navigation.navigate('searchScreen',{item:item.name})
+                                navigation.navigate('SearchResultScreens',{item:item.name})
                                 setModalVisible(false)
                                 setTextInputFocused(true)
                             }}>
