@@ -71,4 +71,30 @@ export const colors = {
    fontWeight:"bold"
  }
 
+ export const fonts = {
+  ios:{
+    regular: "System",
+    light: "System",
+    lightItalics: "System",
+    bold: "System",
+    boldItalic: "System",
+    black: "System",
+    blackItalic: "System",
+  },
+  android:{
+    regular: "Roboto",
+    Italic: "Roboto-Italic",
+    thin: "Roboto-Thin",
+    thinItalic: "Roboto-ThinItalic",
+    light: "Roboto-Light",
+    lightItalic:"Roboto-LightItalic",
+    medium:"Roboto-medium",
+    mediumItalic:"Roboto-MediumItalic",
+    bold:"Roboto-Bold",
+    boldItalic:"Roboto-BoldItalic",
+    condensed: "RobotoCondensed-Regular",
+    condensedItalic:"RobotoCondensed-Italic"
+  }
+ }
+
  

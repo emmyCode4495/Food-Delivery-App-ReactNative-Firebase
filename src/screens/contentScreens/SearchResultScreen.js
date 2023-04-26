@@ -34,6 +34,7 @@ const SearchResultScreens = ({navigation,route}) => {
                     farAway={item.farAway}
                     businessAddress={item.businessAddress}
                     restaurantProductData={item.ProductCard}
+                    onPressRestaurantCard={()=>{navigation.navigate("RestaurantHomePage",{id:index,restaurant:item.restaurantName})}}
                 />
                  )}
 

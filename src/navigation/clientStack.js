@@ -3,6 +3,7 @@ import { StyleSheet,Text, View } from 'react-native'
 import { createStackNavigator, TransitionPresets} from '@react-navigation/stack'
 import SearchResultScreens from '../screens/contentScreens/SearchResultScreen'
 import SearchScreen from '../screens/contentScreens/searchScreenTab'
+import RestaurantHomePage from '../screens/contentScreens/restaurantHomePage'
 
 
 const ClientSearch = createStackNavigator()
@@ -29,7 +30,20 @@ export function ClientStackNavigation(){
                         headerShown: false
                     })
                 }
-            /> 
-        </ClientSearch.Navigator>
+            />
+
+    
+<ClientSearch.Screen 
+                name = "RestaurantHomePage"
+                component = {RestaurantHomePage}
+                options = {
+                    () => ({
+                        headerShown: false
+                    })
+                }
+            />
+    </ClientSearch.Navigator>
+
+        
     )
 }

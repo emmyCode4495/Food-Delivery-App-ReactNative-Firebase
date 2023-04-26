@@ -26,24 +26,29 @@ const SearcResultCard = ({
     images,
     restaurantProductData,
 }) => {
-  return (
-    <View style = {styles.view1}>
-      <View style={{height:150}}>
-        <ImageBackground
-         style= {{height:160}}
-         source={{uri:images}}
-         imageStyle = {styles.imgStyle}
-            />
-            <View style={styles.image}>
-                <Text style={styles.text1}>{averageReview}</Text>
-                <Text style={styles.text2}>{numberOfReview }</Text>
-            </View>
-      </View>
 
-      <View style={styles.view3}>
-        <View style = {{paddingTop:5}}>
-        <Text style = {styles.text5}>{restaurantName}</Text>
+  return (
+    <View>
+    <TouchableOpacity
+        onPress={onPressRestaurantCard}
+        >
+    <View style = {styles.view1}>
+        <View style={{height:150}}>
+            <ImageBackground
+            style= {{height:160}}
+            source={{uri:images}}
+            imageStyle = {styles.imgStyle}
+                />
+                <View style={styles.image}>
+                    <Text style={styles.text1}>{averageReview}</Text>
+                    <Text style={styles.text2}>{numberOfReview }</Text>
+                </View>
         </View>
+     
+    <View style={styles.view3}>
+            <View style = {{paddingTop:5}}>
+                <Text style = {styles.text5}>{restaurantName}</Text>
+            </View>
         <View style={{flexDirection:"row"}}>
             <View style={styles.view4}>
                 <Icon 
@@ -60,7 +65,8 @@ const SearcResultCard = ({
             </View>
         </View>
       </View>
-
+    </View>
+      </TouchableOpacity> 
       <View style={{marginTop:5,paddingBottom:20}}>
       <FlatList 
             horizontal={true}
@@ -76,8 +82,8 @@ const SearcResultCard = ({
             )}
             showsHorizontalScrollIndicator= {false}
         />
+        </View>
       </View>
-    </View>
   )
 }
 
