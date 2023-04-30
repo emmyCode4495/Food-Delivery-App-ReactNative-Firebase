@@ -1,18 +1,28 @@
-import { StyleSheet, Text, View, ScrollView,Dimensions } from 'react-native'
+import { StyleSheet, 
+        Text, View, 
+        ScrollView,Dimensions,
+        TouchableOpacity,
+        Modal } from 'react-native'
 import React,{useState} from 'react'
 import RestaurantHeader from '../../components/RestaurantHeader'
+import MenuScreenTab from '../RestaurantTabsScreens/MenuScreenTab'
 
 import { Icon } from 'react-native-elements'
 import { colors,fonts } from '../../global/styles'
 import {TabView, TabBar} from 'react-native-tab-view'
 import { restaurantData } from '../../global/data'
 
+
+
+
 const SCREEN_WIDTH = Dimensions.get('window').width
-const initialLayout = SCREEN_WIDTH;
+
 
 const RestaurantHomePage = ({navigation,route}) => {
 
+  const [index, setIndex] = useState(0)
   const {id, restaurant} = route.params
+
   const renderTabBar = props =>(
     <TabBar 
       {...props}
@@ -32,8 +42,6 @@ const RestaurantHomePage = ({navigation,route}) => {
     {key:'fourth', title:'GALLERY'}
   ])
 
-  const [index, setIndex] = useState(0)
-
   const updateRoute1 =()=>{
     return(
       <View>
@@ -41,6 +49,9 @@ const RestaurantHomePage = ({navigation,route}) => {
     )
   }
 
+ const menuPressed =()=>{
+    navigation.navigate("MenuProductScreen")
+ }
 
   return (
     <View style={styles.container}>
@@ -99,12 +110,29 @@ const RestaurantHomePage = ({navigation,route}) => {
               navigationState={{index,routes}}
               renderScene={updateRoute1}
               onIndexChange={setIndex}
-              initialLayout={initialLayout}
+              initialLayout={SCREEN_WIDTH}
               renderTabBar={renderTabBar}
               tabBarPosition='top'
             />
         </View>
+        
+        {index == 0 &&
+          <MenuScreenTab onPress ={menuPressed}/>
+        }
+
       </ScrollView>
+
+        <TouchableOpacity>
+          <View style={styles.view11}>
+            <View style={styles.view12}>
+              <Text style={styles.text13}>View Cart</Text>
+              <View style={styles.view13}>
+                <Text style={styles.text13}>0</Text>
+              </View>
+            </View>
+          </View>
+        </TouchableOpacity>
+       
     </View>
   )
 }
@@ -114,7 +142,6 @@ export default RestaurantHomePage
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    marginTop:18
   },
   view1:{
     width:"100%",
@@ -245,13 +272,17 @@ view13:{
   marginRight:10,
   borderColor:colors.cardBackground,
   borderRadius:6,
-  paddingBottom:2
+  paddingBottom:2,
+  justifyContent:"center",
+  marginTop:10
 },
 text13:{
   paddingHorizontal:3,
   fontWeight:"bold",
   fontSize:18,
-  color:colors.cardBackground
+  color:colors.cardBackground,
+  marginTop:10,
+  marginLeft:10
 },
 tab:{
   paddingTop:0,
@@ -270,5 +301,26 @@ tabLabel:{
 tabStyle:{
   width:SCREEN_WIDTH/4,
   maxHeight:45
+},
+view14:{
+  flexDirection:'row',
+  alignItems:"center",
+  padding:10,
+  backgroundColor:colors.buttons,
+  top:0,
+  left:0,
+  right:0,
+  paddingTop:25
+},
+text14:{
+  fontWeight:"bold",
+  marginLeft:15,
+  color:colors.cardBackground,
+  fontSize:18
+},
+view15:{
+  marginTop:5,
+  paddingBottom:20
 }
+
 })
