@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "926397034935",
+    "project_id": "foodie-6d1eb",
+    "storage_bucket": "foodie-6d1eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926397034935:android:8e59f963a446f07adf3832",
+        "android_client_info": {
+          "package_name": "foodie.android.marvina"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926397034935-qbrdcrmr1j6nl78sfiutu1am5u638kt7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcKP-g2rcSCOWBg5PXVmg-3V8VUNw9xfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926397034935-qbrdcrmr1j6nl78sfiutu1am5u638kt7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
