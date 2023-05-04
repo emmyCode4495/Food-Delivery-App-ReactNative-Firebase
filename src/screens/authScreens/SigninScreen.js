@@ -2,9 +2,11 @@ import {StyleSheet,
     View,
     Text,
     Dimensions,
-     TextInput, TouchableOpacity} from 'react-native';
+     TextInput, TouchableOpacity, Alert} from 'react-native';
 import {colors, parameters, title} from '../../global/styles';
 import {ReactComponentElement, useState,useRef} from 'react';
+
+import auth from '@react-native-firebase/auth'
 
 import Header from '../../components/header';
 import * as Animatable from 'react-native-animatable'
@@ -12,7 +14,7 @@ import * as Animatable from 'react-native-animatable'
 
 
 import { Icon, SocialIcon,Button } from 'react-native-elements'
-
+import {Formik, formik} from 'formik'
 
 export default function SignInScreen({navigation}){
 
@@ -21,8 +23,26 @@ export default function SignInScreen({navigation}){
 
     const textInput1 = useRef(1)
     const textInput2 = useRef(2)
+
+    async function signIn(data){
+        try{
+        const {email,password} = data
+        const user = await auth().signInWithEmailAndPassword(email,password)
+        if(user){
+            console.log("Signed in Sucessfully")
+        }
+    }
+        catch(error){
+            Alert.alert(
+                error.name,
+                error.message
+            )
+        }
+    }
+
     return(
         <View style = {styles.container}>
+
             <Header title="MY ACCOUNT" 
             type="arrow-left" navigation={navigation}/>
             <View style = {styles.titleTexttMargin}>
@@ -34,31 +54,43 @@ export default function SignInScreen({navigation}){
                 <Text style={styles.text1}>registered with your account</Text>
             </View>
 
-            <View>
 
+            <Formik 
+            
+                initialValues={{email:'',password:''}}
+                onSubmit={(values)=>{
+                    signIn(values)
+                }}
+            >
+                { (props) =>
+                <View>
+                <View style={{marginTop:20}}>
                 <View style={styles.textInput1}> 
                     <Animatable.View animation={textInput1Focus?"":"fadeInLeft"}
                     duration={400}>
                         <Icon
+                            style={styles.email}
                             name='email'
                             type='material'
                             iconStyle={{color:colors.grey3}}/>
-                    </Animatable.View>
+                    </Animatable.View>                                                           
                     
                     <TextInput 
-                    style ={{width:"80%"}} 
+                    style ={{width:"90%"}} 
                     placeholder="Email"
+                    onChangeText={props.handleChange('email')}
+                    value={props.values.email}
                     ref = {textInput1}
                     onFocus = {()=>{
                         setTextInput1Focus(false)
                     }}
                     onBlur = {()=>{
                         setTextInput1Focus(true)
-                    }}/>    
+                    }}/>
+
                 </View>
 
                 <View style={styles.textInput2}>
-
                 <Animatable.View animation={textInput2Focus?"":"fadeInLeft"} 
                 duration = {400}>
                     <Icon 
@@ -75,6 +107,8 @@ export default function SignInScreen({navigation}){
                     onFocus = {()=>{
                         setTextInput2Focus(false)
                     }}
+                    onChangeText={props.handleChange('password')}
+                    value={props.values.password}
                     onBlur = {()=>{
                         setTextInput2Focus(true)
                     }}/>
@@ -88,19 +122,22 @@ export default function SignInScreen({navigation}){
                     style={{marginRight: 10}}/>
                 </Animatable.View>
                 </View>
-
             </View>
+
                 <View style={{marginHorizontal:20,marginVertical:20}}>
                 <Button
                 title="SIGN IN"
                  buttonStyle={parameters.styledButton}
                  titleStyle={parameters.buttonTitle}
-                 onPress = {()=>{
-                    navigation.navigate('DrawerNavigator')
-
-                }}
+                 onPress ={props.handleSubmit}
                   />
+            </View>
+
                 </View>
+            }
+            </Formik>
+            
+
             <View style={{alignItems:"center",
                             marginTop:20}}>
                 <Text style={{...styles.text1, 
@@ -161,6 +198,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop:10,
     },
+
     text1:{
         color:colors.grey3,
         fontSize:18,  
