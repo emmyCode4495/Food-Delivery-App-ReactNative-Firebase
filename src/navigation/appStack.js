@@ -19,7 +19,7 @@ export default function AppStack(){
             />
 
             <App.Screen
-            name = "mapScreen"
+            name = "MapScreen"
             component = {MapScreen}
             options ={{
                 headerShown: false,

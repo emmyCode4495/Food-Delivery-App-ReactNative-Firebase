@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import auth from '@react-native-firebase/auth'
 
 import {
     DrawerContentScrollView,
@@ -6,6 +7,7 @@ import {
     DrawerItem
 
 } from '@react-navigation/drawer'
+import { SignInContext } from '../context/authContext'
 
 import {
     View,
@@ -14,7 +16,8 @@ import {
     Pressable,
     Alert,
     Switch,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
 } from 'react-native'
 
 import {
@@ -25,6 +28,21 @@ import {
 
 import {colors} from '../global/styles'
 export default function DrawerHeaderContent(props){
+
+    const {dispatchSignedIn} = useContext(SignInContext)
+    async function signOutUser(){
+        try{
+        auth()
+        .signOut()
+        .then(
+        ()=>{
+            console.log("User signed out succesfully")
+            dispatchSignedIn({type:'UPDATE_SIGN_IN',payload:{userToken:null}})
+        })    
+        }catch(error){
+            Alert.alert(error.code)
+        }
+    }
         return(
             <View style={styles.container}>
                 <DrawerContentScrollView {...props}>
@@ -136,10 +154,11 @@ export default function DrawerHeaderContent(props){
                         name='logout-variant'
                         color={color}
                         size={size}
+                        onPress={()=>{signOutUser()}}
                     />
                 )}
-               
                 />
+                
             </View>
         )
 }

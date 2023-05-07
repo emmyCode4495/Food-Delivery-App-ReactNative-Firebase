@@ -32,6 +32,7 @@ export default function SignInScreen({navigation}){
         const {email,password} = data
         const user = await auth().signInWithEmailAndPassword(email,password)
         if(user){
+            console.log("User Signed in successfully")
             dispatchSignedIn({type:"UPDATE_SIGN_IN",payload:{userToken:"signed-in"}})
         }
     }
